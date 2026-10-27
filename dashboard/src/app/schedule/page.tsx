@@ -112,7 +112,7 @@ export default function SchedulePage() {
                 <h2 className="text-sm font-bold uppercase tracking-[0.4em] text-white">
                   Tactical_Operation_Timeline
                 </h2>
-                <span className="text-[10px] font-mono opacity-40">UTC+09:00_SEOUL</span>
+                <span className="text-[11px] font-mono text-[var(--color-text-muted)]">UTC+09:00_SEOUL</span>
               </div>
               
               <div 
@@ -152,7 +152,7 @@ export default function SchedulePage() {
                   </AnimatePresence>
                   
                   {filteredSchedules.length === 0 && (
-                    <div className="text-center py-20 opacity-30 font-mono text-xs tracking-widest">
+                    <div className="text-center py-20 font-mono text-xs tracking-widest text-[var(--color-text-muted)]">
                       NO_DATA_MATCHING_FILTER_CRITERIA
                     </div>
                   )}
@@ -168,7 +168,7 @@ export default function SchedulePage() {
                     &gt; NEXT_CRITICAL_EVENT
                   </h2>
                   <div className="text-center py-4">
-                    <p className="text-[10px] opacity-40 mb-1">HACKATHON_START_IN</p>
+                    <p className="text-[11px] text-[var(--color-text-muted)] mb-1">HACKATHON_START_IN</p>
                     <div className="text-2xl font-bold font-mono tracking-tighter text-white">
                         {timeLeft.h.toString().padStart(2, '0')}
                         <span className="text-[var(--color-primary)] mx-1">:</span>
@@ -176,7 +176,7 @@ export default function SchedulePage() {
                         <span className="text-[var(--color-primary)] mx-1">:</span>
                         {timeLeft.s.toString().padStart(2, '0')}
                     </div>
-                    <p className="text-[9px] mt-2 text-red-400/60 font-mono tracking-widest">ENIAC_SPRING_HACK_2026</p>
+                    <p className="text-[10px] mt-2 text-red-400/70 font-mono tracking-widest">ENIAC_SPRING_HACK_2026</p>
                   </div>
               </section>
 
@@ -211,7 +211,7 @@ export default function SchedulePage() {
 function StatRow({ label, value, color = "" }: { label: string; value: number, color?: string }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-[10px] uppercase tracking-wider opacity-60">{label}</span>
+      <span className="text-[11px] uppercase tracking-wider text-[var(--color-text-secondary)]">{label}</span>
       <span className={clsx("text-xs font-mono font-bold", color)}>{value.toString().padStart(2, '0')}</span>
     </div>
   );

@@ -57,13 +57,13 @@ function GroupsPageContent() {
               {isAdmin && (
                 <button 
                   onClick={() => setIsCreateModalOpen(true)}
-                  className="text-[10px] font-mono text-amber-500 border border-amber-500/50 px-2 py-1 bg-amber-500/10 hover:bg-amber-500 hover:text-black transition-all hidden sm:block"
+                  className="text-[11px] font-mono text-amber-500 border border-amber-500/50 px-2 py-1 bg-amber-500/10 hover:bg-amber-500 hover:text-black transition-all hidden sm:block"
                 >
                   + INITIALIZE_NEW_CLUSTER
                 </button>
               )}
             </h1>
-            <p className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-[0.3em] font-mono">
+            <p className="text-[11px] text-[var(--color-text-secondary)] uppercase tracking-[0.3em] font-mono">
               // ACTIVE_PROJECTS_AND_STUDY_GROUPS
             </p>
           </div>
@@ -75,7 +75,7 @@ function GroupsPageContent() {
                   key={f}
                   onClick={() => setFilter(f as any)}
                   className={clsx(
-                    "px-4 py-2 text-[10px] font-mono uppercase tracking-widest transition-all",
+                    "px-4 py-2 text-[11px] font-mono uppercase tracking-widest transition-all",
                     filter === f ? "bg-[var(--color-primary)] text-black font-bold" : "bg-[var(--color-bg-black)] text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)]/10 hover:text-[var(--color-primary)]"
                   )}
                 >
@@ -90,7 +90,7 @@ function GroupsPageContent() {
                 placeholder="SEARCH_BY_NAME_OR_TECH..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full sm:w-64 bg-[var(--color-bg-black)] border border-[var(--color-primary)]/30 rounded px-4 py-2 text-[10px] font-mono text-[var(--color-text-primary)] focus:border-[var(--color-primary)] focus:glow-sm transition-all"
+                className="w-full sm:w-64 bg-[var(--color-bg-black)] border border-[var(--color-primary)]/30 rounded px-4 py-2 text-[11px] font-mono text-[var(--color-text-primary)] focus:border-[var(--color-primary)] focus:glow-sm transition-all"
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">🔍</div>
             </div>
@@ -115,7 +115,7 @@ function GroupsPageContent() {
               <div className="h-full flex flex-col items-center justify-center border border-dashed border-[var(--color-primary)]/10 rounded-lg">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} className="text-center">
                   <p className="text-[var(--color-text-secondary)] font-mono uppercase tracking-[0.2em] mb-4">No matching clusters found</p>
-                  <button onClick={() => { setSearchTerm(""); setFilter("all"); }} className="px-4 py-2 border border-[var(--color-primary)] text-[10px] font-mono hover:bg-[var(--color-primary)]/10 transition-all">RESET_FILTERS()</button>
+                  <button onClick={() => { setSearchTerm(""); setFilter("all"); }} className="px-4 py-2 border border-[var(--color-primary)] text-[11px] font-mono hover:bg-[var(--color-primary)]/10 transition-all">RESET_FILTERS()</button>
                 </motion.div>
               </div>
             )}
@@ -123,12 +123,12 @@ function GroupsPageContent() {
           <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[var(--color-bg-black)] to-transparent z-10 pointer-events-none" />
         </div>
 
-        <div className="flex items-center justify-between py-4 border-t border-[var(--color-primary)]/10 text-[9px] font-mono text-[var(--color-text-secondary)] uppercase tracking-[0.2em]">
+        <div className="flex items-center justify-between py-4 border-t border-[var(--color-primary)]/10 text-[10px] font-mono text-[var(--color-text-secondary)] uppercase tracking-[0.2em]">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-2"><span className="text-[var(--color-primary)] opacity-50">TOTAL_CLUSTERS:</span> {groups.length}</span>
-            <span className="flex items-center gap-2"><span className="text-[var(--color-primary)] opacity-50">VISIBLE_CLUSTERS:</span> {filteredGroups.length}</span>
+            <span className="flex items-center gap-2"><span className="text-[var(--color-primary)]/70">TOTAL_CLUSTERS:</span> {groups.length}</span>
+            <span className="flex items-center gap-2"><span className="text-[var(--color-primary)]/70">VISIBLE_CLUSTERS:</span> {filteredGroups.length}</span>
           </div>
-          <div className="flex items-center gap-6 text-[8px]"><span className="flex items-center gap-1.5 opacity-60">{">"} CLUSTER_MONITORING_ACTIVE</span></div>
+          <div className="flex items-center gap-6 text-[10px]"><span className="flex items-center gap-1.5 text-[var(--color-text-muted)]">{">"} CLUSTER_MONITORING_ACTIVE</span></div>
         </div>
       </div>
 

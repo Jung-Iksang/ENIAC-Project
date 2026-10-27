@@ -65,11 +65,11 @@ export function MemberCard({ member, onClick }: MemberCardProps) {
                 {member.name}
               </h3>
               <div className="flex flex-col items-end">
-                <span className="text-[9px] font-mono tracking-widest text-[var(--color-text-secondary)] opacity-60">
+                <span className="text-[11px] font-mono tracking-widest text-[var(--color-text-secondary)]">
                   [{(member.role || "member").toUpperCase()}]
                 </span>
                 {todayCommits > 0 && (
-                  <span className="text-[8px] font-mono text-emerald-400 mt-0.5 animate-bounce">
+                  <span className="text-[10px] font-mono text-emerald-400 mt-0.5 animate-bounce">
                     🔥 {todayCommits}
                   </span>
                 )}
@@ -77,18 +77,18 @@ export function MemberCard({ member, onClick }: MemberCardProps) {
             </div>
             
             {member.statusMessage && (
-              <p className="text-[9px] font-mono text-emerald-400/80 mb-2 truncate italic">
+              <p className="text-[11px] font-mono text-emerald-400/80 mb-2 truncate italic">
                 {">"} {member.statusMessage}
               </p>
             )}
-            
-            <p className="text-[10px] font-bold text-[var(--color-primary)] mb-2 uppercase tracking-tighter">
+
+            <p className="text-[11px] font-bold text-[var(--color-primary)] mb-2 uppercase tracking-tighter">
               {member.position} <span className="opacity-30">|</span> {member.department}
             </p>
             
             {/* Activity Pulse Gauge */}
             <div className="mb-3 space-y-1">
-              <div className="flex justify-between items-center text-[8px] font-mono text-[var(--color-text-secondary)] uppercase">
+              <div className="flex justify-between items-center text-[10px] font-mono text-[var(--color-text-secondary)] uppercase">
                 <span>Activity_Pulse</span>
                 <span>{todayCommits} COMMITS</span>
               </div>
@@ -102,8 +102,8 @@ export function MemberCard({ member, onClick }: MemberCardProps) {
             </div>
             
             <div className="pt-2 border-t border-[var(--color-primary)]/10">
-              <p className="text-[9px] font-mono text-[var(--color-text-secondary)] leading-tight line-clamp-1 group-hover:text-[var(--color-primary)]/70 transition-colors">
-                <span className="text-[var(--color-primary)]/40 mr-1">STACK:</span>
+              <p className="text-[11px] font-mono text-[var(--color-text-secondary)] leading-tight line-clamp-1 group-hover:text-[var(--color-primary)]/70 transition-colors">
+                <span className="text-[var(--color-primary)]/50 mr-1">STACK:</span>
                 {skillsText || "NONE"}
               </p>
             </div>
@@ -116,7 +116,7 @@ export function MemberCard({ member, onClick }: MemberCardProps) {
         <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[var(--color-primary)]/0 group-hover:border-[var(--color-primary)]/40 transition-all" />
         <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[var(--color-primary)]/0 group-hover:border-[var(--color-primary)]/40 transition-all" />
 
-        <div className="absolute bottom-2 right-3 text-[8px] font-mono text-[var(--color-text-secondary)] opacity-0 group-hover:opacity-40 transition-opacity">
+        <div className="absolute bottom-2 right-3 text-[10px] font-mono text-[var(--color-text-muted)] opacity-0 group-hover:opacity-60 transition-opacity">
           SYS_JOIN_DT: {member.joinDate}
         </div>
       </motion.div>

@@ -11,13 +11,6 @@ interface ActiveNodesPreviewProps {
   className?: string;
 }
 
-const mockActivities = [
-  "Compiling API_v2",
-  "Reviewing PR #142",
-  "Debugging auth flow",
-  "Writing tests",
-];
-
 export function ActiveNodesPreview({ users, delay = 0, className }: ActiveNodesPreviewProps) {
   const onlineUsers = users.filter((u) => u.status === "online");
   const top3 = users.slice(0, 3);
@@ -39,7 +32,7 @@ export function ActiveNodesPreview({ users, delay = 0, className }: ActiveNodesP
         <h3 className="text-[12px] font-bold uppercase tracking-[0.2em] text-[var(--color-primary)]">
           Active Nodes
         </h3>
-        <span className="text-[11px] font-mono bg-[var(--color-primary)] text-[var(--color-bg-black)] px-1.5 py-0.5">
+        <span className="text-[12px] font-mono bg-[var(--color-primary)] text-[var(--color-bg-black)] px-1.5 py-0.5">
           {onlineUsers.length} ONLINE
         </span>
       </div>
@@ -59,7 +52,7 @@ export function ActiveNodesPreview({ users, delay = 0, className }: ActiveNodesP
           >
             {/* Avatar with Status */}
             <div className="relative shrink-0">
-              <div className="w-7 h-7 rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-bg-black)] flex items-center justify-center text-[11px]">
+              <div className="w-7 h-7 rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-bg-black)] flex items-center justify-center text-[12px]">
                 {user.avatar ? (
                   <img src={user.avatar} alt={user.name} className="w-full h-full rounded-full" />
                 ) : (
@@ -78,11 +71,9 @@ export function ActiveNodesPreview({ users, delay = 0, className }: ActiveNodesP
 
             {/* Info */}
             <div className="flex-1 min-w-0">
-              <p className="text-[12px] font-bold truncate">{user.name}</p>
-              <p className="text-[10px] text-[var(--color-text-secondary)] truncate">
-                {user.status === "online"
-                  ? mockActivities[index % mockActivities.length]
-                  : "Offline"}
+              <p className="text-[13px] font-bold truncate">{user.name}</p>
+              <p className="text-[11px] text-[var(--color-text-secondary)] truncate">
+                {user.status === "online" ? "Active" : "Offline"}
               </p>
             </div>
           </motion.div>
@@ -94,7 +85,7 @@ export function ActiveNodesPreview({ users, delay = 0, className }: ActiveNodesP
         href="/members"
         className={clsx(
           "mt-2 py-1.5 text-center",
-          "text-[11px] uppercase tracking-widest",
+          "text-[12px] uppercase tracking-widest",
           "border border-[var(--color-primary)]/20",
           "hover:bg-[var(--color-primary)] hover:text-[var(--color-bg-black)]",
           "transition-all duration-300"

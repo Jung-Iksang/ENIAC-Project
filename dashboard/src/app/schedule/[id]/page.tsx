@@ -6,7 +6,6 @@ import { ProtectedRoute } from "@/components/auth";
 import { MemberDetailModal } from "@/components/dashboard";
 import { useScheduleStore } from "@/stores/scheduleStore";
 import { useAuthStore } from "@/stores/authStore";
-import { mockMembers } from "@/lib/mockData";
 import { motion, AnimatePresence } from "framer-motion";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
@@ -19,40 +18,13 @@ export default function ScheduleDetailPage() {
   const params = useParams();
   const router = useRouter();
   const { getScheduleById } = useScheduleStore();
-  const { user: currentUser } = useAuthStore();
+  const { user: currentUser, getAllMembers } = useAuthStore();
   const schedule = getScheduleById(params.id as string);
 
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // MembersPage와 동일한 멤버 데이터 병합 로직
-  const allMembers = useMemo(() => {
-    let list = [...mockMembers];
-    if (currentUser) {
-      const existingIndex = list.findIndex(m => m.id === currentUser.id);
-      const githubId = currentUser.socialLinks?.github || currentUser.username;
-      const myNode: Member = {
-        ...currentUser,
-        id: currentUser.id,
-        name: currentUser.name || "Unknown Member",
-        username: currentUser.username || "guest",
-        avatar: currentUser.avatar || "",
-        status: "online",
-        statusMessage: currentUser.statusMessage || "Active in cluster",
-        role: currentUser.role || "member",
-        position: currentUser.position || "Club Member",
-        department: currentUser.department || "Management",
-        bio: currentUser.bio || "No biography available.",
-        skills: currentUser.skills || [],
-        socialLinks: { ...currentUser.socialLinks, github: githubId },
-        joinDate: currentUser.joinDate || new Date().toISOString().split('T')[0]
-      } as Member;
-
-      if (existingIndex !== -1) list[existingIndex] = myNode;
-      else list = [myNode, ...list];
-    }
-    return list;
-  }, [currentUser]);
+  const allMembers = useMemo(() => getAllMembers(), [getAllMembers]);
 
   // 이 일정에 참여 중인 멤버 필터링
   const participatingNodes = useMemo(() => {

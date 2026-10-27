@@ -37,17 +37,17 @@ export function Panel({
       transition={{ duration: 0.5, delay }}
     >
       {/* Corner Decorations */}
-      <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-[var(--color-primary)] opacity-60" />
-      <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-[var(--color-primary)] opacity-60" />
-      <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-[var(--color-primary)] opacity-60" />
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-[var(--color-primary)] opacity-60" />
+      <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-[var(--color-primary)] opacity-80" />
+      <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-[var(--color-primary)] opacity-80" />
+      <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-[var(--color-primary)] opacity-80" />
+      <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-[var(--color-primary)] opacity-80" />
 
       {/* Title Bar */}
       {title && (
         <div className="panel-title">
           <span className="font-medium tracking-wider">{title}</span>
           {subtitle && (
-            <span className="text-[10px] opacity-50">{subtitle}</span>
+            <span className="text-[11px] text-[var(--color-text-secondary)]">{subtitle}</span>
           )}
         </div>
       )}

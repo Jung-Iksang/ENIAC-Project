@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { PageLayout } from "@/components/layout";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
@@ -12,15 +12,8 @@ import {
   ActiveNodesPreview,
   EventPreview,
 } from "@/components/dashboard";
-import {
-  mockServerStatus,
-  mockUsers,
-  mockCommitRankings,
-  mockSchedules,
-  mockQuote,
-  mockChallenges,
-  getRandomServerStatus,
-} from "@/lib/mockData";
+import { useScheduleStore } from "@/stores/scheduleStore";
+import { useAuthStore } from "@/stores/authStore";
 import type { ServerStatus as ServerStatusType } from "@/types";
 
 // 앱 탭 유지 동안 한 번만 실행되도록 하는 모듈 전역 변수
@@ -35,27 +28,19 @@ export default function DashboardPage() {
 }
 
 function DashboardContent() {
-  const [isConnected, setIsConnected] = useState(true);
-  const [serverStatus, setServerStatus] = useState<ServerStatusType>(mockServerStatus);
+  const [isConnected] = useState(true);
+  const [serverStatus] = useState<ServerStatusType | null>(null);
   // 이미 부팅 애니메이션이 완료되었다면 false로 시작
   const [showBoot, setShowBoot] = useState(!dashboardInitialBootDone);
 
-  // Simulate real-time server status updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setServerStatus(getRandomServerStatus());
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Simulate connection status
-  useEffect(() => {
-    const checkConnection = () => {
-      setIsConnected(Math.random() > 0.05);
-    };
-    const interval = setInterval(checkConnection, 10000);
-    return () => clearInterval(interval);
-  }, []);
+  const { schedules } = useScheduleStore();
+  const { getAllMembers } = useAuthStore();
+  const users = useMemo(() => getAllMembers().map(m => ({
+    id: m.id,
+    name: m.name,
+    status: m.status,
+    avatar: m.avatar || "",
+  })), [getAllMembers]);
 
   // Boot animation control
   useEffect(() => {
@@ -77,21 +62,21 @@ function DashboardContent() {
               <CompactStatsGrid data={serverStatus} delay={0.1} />
             </div>
             <div className="lg:col-span-4 hidden lg:block">
-              <ClockQuotePanel quote={mockQuote} delay={0.2} />
+              <ClockQuotePanel quote={null} delay={0.2} />
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-4 lg:min-h-0">
             <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-4">
               <div className="min-h-[180px]">
-                <CommitPreview rankings={mockCommitRankings} delay={0.3} />
+                <CommitPreview rankings={[]} delay={0.3} />
               </div>
               <div className="min-h-[180px]">
-                <AlgorithmSummary challenges={mockChallenges} delay={0.4} />
+                <AlgorithmSummary challenges={[]} delay={0.4} />
               </div>
             </div>
             <div className="lg:col-span-4 min-h-[180px]">
-              <ActiveNodesPreview users={mockUsers} delay={0.5} />
+              <ActiveNodesPreview users={users} delay={0.5} />
             </div>
           </div>
 
@@ -100,7 +85,7 @@ function DashboardContent() {
               <BroadcastPanel delay={0.6} />
             </div>
             <div className="lg:col-span-4 min-h-[180px]">
-              <EventPreview schedules={mockSchedules} delay={0.7} />
+              <EventPreview schedules={schedules} delay={0.7} />
             </div>
           </div>
         </div>

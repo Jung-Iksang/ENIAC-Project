@@ -59,22 +59,22 @@ export function EventPreview({ schedules, delay = 0, className }: EventPreviewPr
                 {/* Date Block */}
                 <div
                   className={clsx(
-                    "w-8 h-8 rounded-sm border flex flex-col items-center justify-center shrink-0",
+                    "w-9 h-9 rounded-sm border flex flex-col items-center justify-center shrink-0",
                     daysUntil <= 1
                       ? "border-[var(--color-primary)]/40 shadow-[0_0_8px_var(--color-accent-glow)]"
                       : "border-[var(--color-primary)]/20 bg-[var(--color-bg-black)]"
                   )}
                 >
-                  <span className="text-[9px] text-[var(--color-text-secondary)]">{month}</span>
-                  <span className="text-[11px] font-bold font-mono">{day}</span>
+                  <span className="text-[10px] text-[var(--color-text-secondary)]">{month}</span>
+                  <span className="text-[12px] font-bold font-mono">{day}</span>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-[12px] font-bold uppercase truncate">
+                  <p className="text-[13px] font-bold uppercase truncate">
                     {schedule.title}
                   </p>
-                  <p className="text-[10px] text-[var(--color-text-secondary)]">
+                  <p className="text-[11px] text-[var(--color-text-secondary)]">
                     {date.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" })}
                   </p>
                 </div>
@@ -83,7 +83,7 @@ export function EventPreview({ schedules, delay = 0, className }: EventPreviewPr
                 {daysUntil <= 3 && (
                   <span
                     className={clsx(
-                      "text-[10px] font-mono px-1 py-0.5 shrink-0",
+                      "text-[11px] font-mono px-1.5 py-0.5 shrink-0",
                       daysUntil === 0
                         ? "bg-[var(--color-error)]/20 text-[var(--color-error)]"
                         : daysUntil === 1
@@ -98,8 +98,8 @@ export function EventPreview({ schedules, delay = 0, className }: EventPreviewPr
             );
           })
         ) : (
-          <div className="flex items-center justify-center h-full opacity-50">
-            <span className="text-[11px]">NO EVENTS</span>
+          <div className="flex items-center justify-center h-full">
+            <span className="text-[12px] text-[var(--color-text-muted)]">NO EVENTS</span>
           </div>
         )}
       </div>
@@ -109,7 +109,7 @@ export function EventPreview({ schedules, delay = 0, className }: EventPreviewPr
         href="/schedule"
         className={clsx(
           "mt-2 py-1.5 text-center",
-          "text-[11px] uppercase tracking-widest",
+          "text-[12px] uppercase tracking-widest",
           "border border-[var(--color-primary)]/20",
           "hover:bg-[var(--color-primary)] hover:text-[var(--color-bg-black)]",
           "transition-all duration-300"

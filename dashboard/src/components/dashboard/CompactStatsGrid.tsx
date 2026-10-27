@@ -54,10 +54,10 @@ function StatCard({ stat, delay }: StatCardProps) {
     >
       {/* Header */}
       <div className="flex justify-between items-center mb-1.5">
-        <span className="text-[10px] text-[var(--color-text-secondary)]/70 uppercase tracking-widest">
+        <span className="text-[11px] text-[var(--color-text-secondary)] uppercase tracking-widest">
           {stat.label}
         </span>
-        <span className="text-[var(--color-primary)]/30">{stat.icon}</span>
+        <span className="text-[var(--color-primary)]/50">{stat.icon}</span>
       </div>
 
       {/* Value */}
@@ -66,7 +66,7 @@ function StatCard({ stat, delay }: StatCardProps) {
           {stat.value}
         </span>
         {stat.subValue && (
-          <span className="text-[11px] text-[var(--color-text-secondary)]/60 ml-0.5">
+          <span className="text-[12px] text-[var(--color-text-muted)] ml-0.5">
             {stat.subValue}
           </span>
         )}

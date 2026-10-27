@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { useEffect, useState } from "react";
 import { DepartmentId } from "@/lib/constants";
-import { mockMembers } from "@/lib/mockData";
+import { useMemberStore } from "./memberStore";
 import { Member } from "@/types";
 
 export interface User {
@@ -88,7 +88,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   // 시스템 전체에서 본인 노드가 포함된 멤버 리스트를 가져오는 단일 창구
   getAllMembers: () => {
     const currentUser = get().user;
-    let list = [...mockMembers];
+    let list = [...useMemberStore.getState().members];
     
     if (currentUser) {
       const existingIndex = list.findIndex(m => m.id === currentUser.id);

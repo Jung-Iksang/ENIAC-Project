@@ -50,7 +50,7 @@ function MembersPageContent() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[var(--color-primary)]/20 pb-6">
           <div>
             <h1 className="text-3xl font-black text-[var(--color-primary)] tracking-tighter uppercase mb-1">Club Members</h1>
-            <p className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-[0.3em] font-mono">
+            <p className="text-[11px] text-[var(--color-text-secondary)] uppercase tracking-[0.3em] font-mono">
               // ENIAC_DIRECTORY: {allMembers.length} NODES_ONLINE
             </p>
           </div>
@@ -61,12 +61,12 @@ function MembersPageContent() {
               placeholder="SEARCH_NODE..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full sm:w-64 bg-[var(--color-bg-black)] border border-[var(--color-primary)]/30 rounded px-4 py-2 text-[10px] font-mono text-[var(--color-text-primary)] focus:border-[var(--color-primary)] focus:glow-sm transition-all"
+              className="w-full sm:w-64 bg-[var(--color-bg-black)] border border-[var(--color-primary)]/30 rounded px-4 py-2 text-[11px] font-mono text-[var(--color-text-primary)] focus:border-[var(--color-primary)] focus:glow-sm transition-all"
             />
             <select
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
-              className="bg-[var(--color-bg-black)] border border-[var(--color-primary)]/30 rounded px-4 py-2 text-[10px] font-mono text-[var(--color-text-primary)] uppercase cursor-pointer focus:border-[var(--color-primary)] transition-all"
+              className="bg-[var(--color-bg-black)] border border-[var(--color-primary)]/30 rounded px-4 py-2 text-[11px] font-mono text-[var(--color-text-primary)] uppercase cursor-pointer focus:border-[var(--color-primary)] transition-all"
             >
               <option value="All">ALL_DEPARTMENTS</option>
               {DEPARTMENTS.map(d => <option key={d.id} value={d.id}>{d.id}</option>)}

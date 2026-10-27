@@ -16,27 +16,36 @@
   --color-bg-black: #05080d;
   --color-bg-light-black: #0a1015;
   --color-bg-grey: #262828;
+  --color-bg-dark: rgba(10, 16, 21, 0.95);
 
-  /* Accent Colors */
-  --color-accent-glow: rgba(170, 207, 209, 0.3);
-  --color-accent-dim: rgba(170, 207, 209, 0.1);
-  --color-accent-bright: rgba(170, 207, 209, 0.8);
+  /* Text Colors - Improved Readability */
+  --color-text-primary: #e0f0f1;      /* Bright cyan-white (95% brightness) */
+  --color-text-secondary: #8ba3a5;    /* Muted cyan (60% brightness) */
+  --color-text-muted: #5a7173;        /* Dim cyan (40% brightness) */
 
-  /* Status Colors */
-  --color-success: #3cd66f;
-  --color-warning: #c5d63c;
-  --color-error: #eb0954;
-  --color-info: #5cffff;
+  /* Accent Colors - Improved Visibility */
+  --color-accent-glow: rgba(170, 207, 209, 0.5);   /* Increased from 0.3 */
+  --color-accent-dim: rgba(170, 207, 209, 0.25);   /* Increased from 0.1 */
+  --color-accent-bright: rgba(170, 207, 209, 0.9); /* Increased from 0.8 */
+
+  /* Status Colors - Improved Contrast */
+  --color-success: #4ade80;           /* Brighter green */
+  --color-warning: #fbbf24;           /* Amber - much better contrast */
+  --color-error: #f43f5e;             /* Rose - slightly brighter */
+  --color-info: #22d3ee;              /* Cyan - better contrast */
 
   /* Typography */
   --font-main: 'Share Tech Mono', 'Fira Code', monospace;
   --font-display: 'Orbitron', 'Share Tech Mono', sans-serif;
 
   /* Font Sizes - Improved Readability */
-  --text-xs: 11px;
-  --text-sm: 12px;
-  --text-base: 14px;
-  --text-lg: 16px;
+  --text-2xs: 10px;   /* Minimum - timestamps only */
+  --text-xs: 11px;    /* Labels, meta */
+  --text-sm: 12px;    /* Secondary content */
+  --text-base: 14px;  /* Body text */
+  --text-lg: 16px;    /* Emphasis */
+  --text-xl: 18px;    /* Subheadings */
+  --text-2xl: 22px;   /* Section headers */
 
   /* Line Heights */
   --leading-tight: 1.3;
@@ -133,7 +142,7 @@ body::before {
 
 .panel {
   position: relative;
-  background: rgba(5, 8, 13, 0.85);
+  background: rgba(5, 8, 13, 0.92);  /* Increased from 0.85 for better readability */
   border: var(--panel-border-width) solid var(--color-accent-glow);
   backdrop-filter: blur(4px);
 }

@@ -74,7 +74,7 @@ export function ConnectionStatus({ isConnected, className }: ConnectionStatusPro
         status={isConnected ? "online" : "offline"}
         size="sm"
       />
-      <span className="text-[10px] uppercase tracking-wider opacity-70">
+      <span className="text-[11px] uppercase tracking-wider text-[var(--color-text-secondary)]">
         {isConnected ? "CONNECTED" : "DISCONNECTED"}
       </span>
     </div>
@@ -132,7 +132,7 @@ export function CrowdLevel({ level, className }: CrowdLevelProps) {
           />
         ))}
       </div>
-      <span className="text-[10px] uppercase tracking-wider">
+      <span className="text-[11px] uppercase tracking-wider text-[var(--color-text-primary)]">
         {config.label}
       </span>
     </div>

@@ -3,8 +3,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Member, Schedule, Group } from "@/types";
 import { GlitchText } from "@/components/ui";
-import { mockSchedules, mockGroups } from "@/lib/mockData";
 import { useAuthStore } from "@/stores/authStore";
+import { useScheduleStore } from "@/stores/scheduleStore";
+import { useGroupStore } from "@/stores/groupStore";
 import Link from "next/link";
 import clsx from "clsx";
 
@@ -16,6 +17,8 @@ interface MemberDetailModalProps {
 
 export function MemberDetailModal({ member: initialMember, isOpen, onClose }: MemberDetailModalProps) {
   const { user: currentUser, setProfileSettingsOpen } = useAuthStore();
+  const { schedules } = useScheduleStore();
+  const { groups } = useGroupStore();
   
   if (!initialMember) return null;
 
@@ -40,8 +43,8 @@ export function MemberDetailModal({ member: initialMember, isOpen, onClose }: Me
   const weeklyActivity = member.metrics?.weeklyActivity || [0, 0, 0, 0, 0, 0, 0];
 
   // 이 멤버가 참여 중인 일정 및 그룹 필터링
-  const assignedSchedules = mockSchedules.filter(s => s.participantIds?.includes(member.id));
-  const joinedGroups = mockGroups.filter(g => g.memberIds.includes(member.id));
+  const assignedSchedules = schedules.filter(s => s.participantIds?.includes(member.id));
+  const joinedGroups = groups.filter(g => g.memberIds.includes(member.id));
 
   const handleEditProfile = () => {
     onClose();

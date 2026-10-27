@@ -6,7 +6,6 @@ import { Schedule, Member } from "@/types";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { useAuthStore } from "@/stores/authStore";
-import { mockMembers } from "@/lib/mockData";
 import { MemberDetailModal } from "@/components/dashboard";
 import Link from "next/link";
 import clsx from "clsx";
@@ -20,23 +19,11 @@ interface ScheduleCardProps {
 }
 
 export function ScheduleCard({ schedule, isPast, isNew, onEdit, onDelete }: ScheduleCardProps) {
-  const { isAdmin, user: currentUser } = useAuthStore();
+  const { isAdmin, user: currentUser, getAllMembers } = useAuthStore();
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
 
-  // 1. 참여 멤버 데이터 로드 (MembersPage와 동일 로직)
-  const allMembers = useMemo(() => {
-    let list = [...mockMembers];
-    if (currentUser) {
-      const existingIndex = list.findIndex(m => m.id === currentUser.id);
-      if (existingIndex !== -1) {
-        list[existingIndex] = { ...list[existingIndex], ...currentUser } as Member;
-      } else {
-        list = [{ ...currentUser, status: "online", joinDate: new Date().toISOString() } as Member, ...list];
-      }
-    }
-    return list;
-  }, [currentUser]);
+  const allMembers = useMemo(() => getAllMembers(), [getAllMembers]);
 
   const participatingNodes = useMemo(() => {
     return allMembers.filter(m => schedule.participantIds?.includes(m.id));

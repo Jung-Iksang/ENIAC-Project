@@ -49,10 +49,10 @@ export function ProgressBar({
   return (
     <div className={clsx("w-full", className)}>
       {(label || showValue) && (
-        <div className="flex justify-between items-center mb-1 text-[10px] uppercase tracking-wider">
-          {label && <span className="opacity-70">{label}</span>}
+        <div className="flex justify-between items-center mb-1 text-[11px] uppercase tracking-wider">
+          {label && <span className="text-[var(--color-text-secondary)]">{label}</span>}
           {showValue && (
-            <span className="font-mono">{percentage.toFixed(1)}%</span>
+            <span className="font-mono text-[var(--color-text-primary)]">{percentage.toFixed(1)}%</span>
           )}
         </div>
       )}
@@ -199,7 +199,7 @@ export function CircularProgress({
         </div>
       )}
       {label && (
-        <span className="mt-2 text-[10px] uppercase tracking-wider opacity-70">
+        <span className="mt-2 text-[11px] uppercase tracking-wider text-[var(--color-text-secondary)]">
           {label}
         </span>
       )}

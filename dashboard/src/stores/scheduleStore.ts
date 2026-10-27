@@ -1,7 +1,5 @@
 import { create } from "zustand";
 import { Schedule } from "@/types";
-import { mockSchedules as initialSchedules } from "@/lib/mockData";
-
 interface ScheduleState {
   schedules: Schedule[];
   addSchedule: (newSchedule: Schedule) => void;
@@ -11,7 +9,7 @@ interface ScheduleState {
 }
 
 export const useScheduleStore = create<ScheduleState>((set, get) => ({
-  schedules: initialSchedules,
+  schedules: [],
   
   addSchedule: (newSchedule) => {
     set((state) => ({

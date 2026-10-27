@@ -32,7 +32,7 @@ export function Footer({ className }: FooterProps) {
       </div>
 
       {/* Copyright */}
-      <p className="text-[10px] text-[var(--color-text-secondary)]/60 font-mono">
+      <p className="text-[11px] text-[var(--color-text-muted)] font-mono">
         © {currentYear} ENIAC_OPS
       </p>
     </motion.footer>
@@ -42,10 +42,10 @@ export function Footer({ className }: FooterProps) {
 function StatusItem({ label, value, className }: { label: string; value: string; className?: string }) {
   return (
     <div className={clsx("flex items-center gap-1.5", className)}>
-      <span className="text-[10px] text-[var(--color-text-secondary)]/50 uppercase tracking-widest">
+      <span className="text-[11px] text-[var(--color-text-secondary)] uppercase tracking-widest">
         {label}:
       </span>
-      <span className="text-[10px] text-[var(--color-primary)]/70 uppercase tracking-wider">
+      <span className="text-[11px] text-[var(--color-primary)] uppercase tracking-wider">
         {value}
       </span>
     </div>

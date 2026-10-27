@@ -103,7 +103,7 @@ export function TopNavbar({
               key={link.id}
               href={link.href}
               className={clsx(
-                "text-[11px] xl:text-sm uppercase tracking-widest transition-all duration-300",
+                "text-[12px] xl:text-sm uppercase tracking-widest transition-all duration-300",
                 "hover:text-[var(--color-primary)] hover:glow",
                 currentPage === link.id
                   ? "text-[var(--color-primary)] border-b border-[var(--color-primary)] pb-1 glow"
@@ -144,13 +144,13 @@ export function TopNavbar({
                   </motion.span>
                 )}
                 <p className={clsx(
-                  "text-[11px] font-bold uppercase tracking-tight",
+                  "text-[12px] font-bold uppercase tracking-tight",
                   user?.role === "admin" ? "text-amber-400" : "text-[var(--color-text-primary)]"
                 )}>
                   {user?.name || 'Guest'}
                 </p>
               </div>
-              <p className="text-[10px] text-[var(--color-text-secondary)] uppercase">
+              <p className="text-[11px] text-[var(--color-text-secondary)] uppercase">
                 {user?.role === "admin" ? "Level 4 Admin" : user?.username || 'Unknown'}
               </p>
             </button>

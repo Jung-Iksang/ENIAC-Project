@@ -7,7 +7,6 @@ import { useGroupStore } from "@/stores/groupStore";
 import { GlitchText } from "@/components/ui";
 import { MemberCard } from "./MemberCard";
 import { DEPARTMENTS, POSITION_SUGGESTIONS, DepartmentId } from "@/lib/constants";
-import { mockGroups } from "@/lib/mockData";
 import { Member } from "@/types";
 import Link from "next/link";
 import clsx from "clsx";
@@ -38,8 +37,8 @@ export function ProfileSettingsModal({ isOpen, onClose }: ProfileSettingsModalPr
   // 내가 속한 그룹 필터링
   const myGroups = useMemo(() => {
     if (!user) return [];
-    return mockGroups.filter(g => g.memberIds.includes(user.id));
-  }, [user]);
+    return groups.filter(g => g.memberIds.includes(user.id));
+  }, [user, groups]);
 
   useEffect(() => {
     if (user && isOpen) {

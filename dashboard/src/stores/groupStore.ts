@@ -1,7 +1,5 @@
 import { create } from "zustand";
 import { Group, GroupStatus, GroupType } from "@/types";
-import { mockGroups } from "@/lib/mockData";
-
 interface GroupState {
   groups: Group[];
   loading: boolean;
@@ -17,7 +15,7 @@ interface GroupState {
 }
 
 export const useGroupStore = create<GroupState>((set, get) => ({
-  groups: mockGroups,
+  groups: [],
   loading: false,
   error: null,
 

@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Group, Member, GroupStatus } from "@/types";
 import { GlitchText } from "@/components/ui";
-import { mockSchedules } from "@/lib/mockData";
 import { useAuthStore } from "@/stores/authStore";
+import { useScheduleStore } from "@/stores/scheduleStore";
 import { useGroupStore } from "@/stores/groupStore";
 import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
@@ -19,6 +19,7 @@ interface GroupDetailModalProps {
 export function GroupDetailModal({ group, isOpen, onClose }: GroupDetailModalProps) {
   const { user, getAllMembers } = useAuthStore();
   const { updateGroup } = useGroupStore();
+  const { schedules } = useScheduleStore();
   
   const [isEditingGoal, setIsEditingGoal] = useState(false);
   const [editGoalValue, setEditGoalValue] = useState("");
@@ -45,8 +46,8 @@ export function GroupDetailModal({ group, isOpen, onClose }: GroupDetailModalPro
 
   const groupSchedules = useMemo(() => {
     if (!group) return [];
-    return mockSchedules.filter(s => s.groupId === group.id);
-  }, [group]);
+    return schedules.filter(s => s.groupId === group.id);
+  }, [group, schedules]);
 
   const leader = useMemo(() => {
     return groupMembers.find(m => m.id === group?.leaderId);

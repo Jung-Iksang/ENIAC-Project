@@ -51,8 +51,8 @@ export function CommitPreview({ rankings, delay = 0, className }: CommitPreviewP
                 {/* Rank */}
                 <span
                   className={clsx(
-                    "text-[12px] font-mono w-4",
-                    index === 0 ? "text-[var(--color-warning)]" : "text-[var(--color-text-secondary)]/60"
+                    "text-[13px] font-mono w-4",
+                    index === 0 ? "text-[var(--color-warning)]" : "text-[var(--color-text-secondary)]"
                   )}
                 >
                   {String(user.rank).padStart(2, "0")}
@@ -61,7 +61,7 @@ export function CommitPreview({ rankings, delay = 0, className }: CommitPreviewP
                 {/* Avatar */}
                 <div
                   className={clsx(
-                    "w-6 h-6 rounded-full border shrink-0 flex items-center justify-center text-[11px]",
+                    "w-6 h-6 rounded-full border shrink-0 flex items-center justify-center text-[12px]",
                     index === 0
                       ? "border-[var(--color-warning)]/50"
                       : "border-[var(--color-primary)]/20 bg-[var(--color-bg-black)]"
@@ -75,20 +75,20 @@ export function CommitPreview({ rankings, delay = 0, className }: CommitPreviewP
                 </div>
 
                 {/* Name */}
-                <span className="text-[12px] font-bold truncate">
+                <span className="text-[13px] font-bold truncate">
                   {user.username.toUpperCase()}
                 </span>
               </div>
 
               {/* Commits */}
-              <span className="font-mono text-[12px] text-[var(--color-primary)]">
+              <span className="font-mono text-[13px] text-[var(--color-primary)]">
                 {user.commits}
               </span>
             </motion.div>
           ))
         ) : (
-          <div className="flex items-center justify-center h-full opacity-50">
-            <span className="text-[11px]">NO DATA</span>
+          <div className="flex items-center justify-center h-full">
+            <span className="text-[12px] text-[var(--color-text-muted)]">NO DATA</span>
           </div>
         )}
       </div>
@@ -98,7 +98,7 @@ export function CommitPreview({ rankings, delay = 0, className }: CommitPreviewP
         href="/github"
         className={clsx(
           "mt-2 py-1.5 text-center",
-          "text-[11px] uppercase tracking-widest",
+          "text-[12px] uppercase tracking-widest",
           "border border-[var(--color-primary)]/20",
           "hover:bg-[var(--color-primary)] hover:text-[var(--color-bg-black)]",
           "transition-all duration-300"
